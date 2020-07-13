@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Turn10Screener
 {
-    public class SumCombinations
+    public class Program
     {
         public static Int32 Main(string[] args)
         {
