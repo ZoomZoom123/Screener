@@ -9,13 +9,15 @@ namespace Turn10Screener
         public static Int32 Main(string[] args)
         {
             // Get input
+            Console.Write("What number would you like to target? ");
             int target_sum = Convert.ToInt32(Console.ReadLine());
+            Console.Write("What is the list of numbers you would like to use to get to the target number (use spaces)? ");
             string[] input = Console.ReadLine().Split(' ');
 
             // Create lists
-            List<Int32> numbers = new List<Int32>();
-            List<Int32[]> output_indexes = new List<Int32[]>();
-            List<Int32[]> output_numbers = new List<Int32[]>();
+            List<int> numbers = new List<int>();
+            List<int[]> output_indexes = new List<int[]>();
+            List<int[]> output_numbers = new List<int[]>();
 
             // Add numbers
             for (int i = 0; i < input.Length; i++)
@@ -24,14 +26,14 @@ namespace Turn10Screener
             }
 
             // Calculate the number of combinations
-            Int32 combinations = (Int32)(Math.Pow(2, numbers.Count) - 1);
+            int combinations = (int)(Math.Pow(2, numbers.Count) - 1);
 
             // Loop all combinations
             for (int i = 0; i < combinations; i++)
             {
                 // Create subset lists
-                List<Int32> subset = new List<Int32>();
-                List<Int32> subindexes = new List<Int32>();
+                List<int> subset = new List<int>();
+                List<int> subindexes = new List<int>();
 
                 // Loop all numbers
                 for (int j = 0; j < numbers.Count; j++)
@@ -44,36 +46,28 @@ namespace Turn10Screener
                     }
                 }
 
-                // Check if the target sum has been reached
+                // Check if the target number has been reached
                 if (subset.Sum() == target_sum)
                 {
-                    // Add a combination
+                    // Add combination to list
                     output_indexes.Add(subindexes.ToArray());
                     output_numbers.Add(subset.ToArray());
-                    //break;
                 }
             }
 
             // Write output
-            Console.WriteLine("\nOutput");
-            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("\n-----------------------------Output-----------------------------");
 
             // Loop output
             for (int i = 0; i < output_indexes.Count; i++)
             {
                 Console.WriteLine(string.Join(" ", output_indexes[i]) + " (" + string.Join(" + ", output_numbers[i]) + " = " + target_sum.ToString() + ")");
             }
-
             Console.WriteLine("---------------------------------------------------");
-
-            // Pause the program
             Console.ReadKey();
 
-            // Return success
+            //End
             return 0;
-
-        } // End of the Main method
-
-    } // End of the class
-
-} // End of the namespace
+        } 
+    }
+} 
