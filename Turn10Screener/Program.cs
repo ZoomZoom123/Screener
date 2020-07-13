@@ -6,7 +6,7 @@ namespace Turn10Screener
 {
     public class Program
     {
-        public static Int32 Main(string[] args)
+        public static int Main(string[] args)
         {
             // Get input
             Console.Write("What number would you like to target? ");
